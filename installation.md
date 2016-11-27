@@ -170,13 +170,14 @@ While some parts of the job are customized, some parameters are left untouched s
 instance is repeatable. Keep in mind, you will want some method of keeping track of your clients and which instance of
 ZECS you have created for them. Recording the path as well is a good idea. Edit DEFZC@@ in the JCL library and
 customize the following fields.
-    1. **@appname@** is the application name to use at the fourth node of the path.
+    1. **@appname@** is the application name using this instance of ZECS. It is the fourth node of the path.
     1. **@environment@** is eight character environment name such as DEV, QA, PROD discussed during planning. This
     setting should match the environment setting used when defining the expiry file.
     1. **@grp_list@** is the CSD group list you wish this instance to be installed.
     1. **@id@** is the two character ZECS instance identifier ranging from 00 to ZZ.
     1. **@org@** is the organization identifier used in the path of the service.
     1. **scheme** is the setting for the SCHEME parameter on the URIMAP definition. Use either http or https.
+    *Note: the path is created by the @org@ and @appname@ values; /resources/ecs/@org@/@appname@.*
 
 1. Submit the DEFZC@@ job to define the instance.
 
