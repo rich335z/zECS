@@ -40,20 +40,20 @@
    NAME ZECS003(R)
 /*
 //**********************************************************************
-//* Assemble and link ZNC
+//* Assemble and link ZECSNC
 //**********************************************************************
-//ZNC      EXEC DFHEITAL,PROGLIB=@program_lib@
-//TRN.SYSIN  DD DISP=SHR,DSN=@source_lib@(ZNC)
+//ZECSNC   EXEC DFHEITAL,PROGLIB=@program_lib@
+//TRN.SYSIN  DD DISP=SHR,DSN=@source_lib@(ZECSNC)
 //*
 //LKED.SYSIN DD *
-   NAME ZNC(R)
+   NAME ZECSNC(R)
 /*
 //**********************************************************************
-//* Compile and link ZPLT
+//* Compile and link ZECSPLT
 //**********************************************************************
-//ZPLT     EXEC DFHYITVL,PROGLIB=@program_lib@
-//TRN.SYSIN  DD DISP=SHR,DSN=@source_lib@(ZPLT)
+//ZECSPLT  EXEC DFHYITVL,PROGLIB=@program_lib@
+//TRN.SYSIN  DD DISP=SHR,DSN=@source_lib@(ZECSPLT)
 //*
 //LKED.SYSIN DD *
-   NAME ZPLT(R)
+   NAME ZECSPLT(R)
 /*

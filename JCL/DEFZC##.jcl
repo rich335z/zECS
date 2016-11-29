@@ -1,4 +1,4 @@
-//DEFZC@@  JOB @job_parms@
+//DEFZC##  JOB @job_parms@
 //**********************************************************************
 //* Customize and define one instance of zECS
 //**********************************************************************
@@ -25,7 +25,7 @@
 //CUSTOMIZ EXEC PGM=IKJEFT1B
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@source_lib@(CSDZC@@)
+//INPUT    DD DISP=SHR,DSN=@source_lib@(CSDZC##)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&CSDCMDS,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)

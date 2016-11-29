@@ -146,12 +146,12 @@
 //SYSUT2    DD DISP=SHR,DSN=@jcl_lib@(DEFEXPR)
 //SYSIN     DD DUMMY
 //**********************************************************************
-//* Modify DEFZC@@ JCL
+//* Modify DEFZC## JCL
 //**********************************************************************
 //STEP13   EXEC PGM=IKJEFT1B,REGION=1024K
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@jcl_lib@(DEFZC@@)
+//INPUT    DD DISP=SHR,DSN=@jcl_lib@(DEFZC##)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&OUTPUT,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -160,20 +160,20 @@
  EXEC '@source_lib@(REXXREPL)'
 /*
 //**********************************************************************
-//* Replace DEFZC@@ JCL
+//* Replace DEFZC## JCL
 //**********************************************************************
 //STEP14    EXEC PGM=IEBGENER,REGION=1024K
 //SYSPRINT  DD SYSOUT=*
 //SYSUT1    DD DISP=(OLD,DELETE),DSN=&&OUTPUT
-//SYSUT2    DD DISP=SHR,DSN=@jcl_lib@(DEFZC@@)
+//SYSUT2    DD DISP=SHR,DSN=@jcl_lib@(DEFZC##)
 //SYSIN     DD DUMMY
 //**********************************************************************
-//* Modify ZC@@DC JCL
+//* Modify ZC##DC JCL
 //**********************************************************************
 //STEP15   EXEC PGM=IKJEFT1B,REGION=1024K
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@jcl_lib@(ZC@@DC)
+//INPUT    DD DISP=SHR,DSN=@jcl_lib@(ZC##DC)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&OUTPUT,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -182,20 +182,20 @@
  EXEC '@source_lib@(REXXREPL)'
 /*
 //**********************************************************************
-//* Replace ZC@@DC  JCL
+//* Replace ZC##DC  JCL
 //**********************************************************************
 //STEP16    EXEC PGM=IEBGENER,REGION=1024K
 //SYSPRINT  DD SYSOUT=*
 //SYSUT1    DD DISP=(OLD,DELETE),DSN=&&OUTPUT
-//SYSUT2    DD DISP=SHR,DSN=@jcl_lib@(ZC@@DC)
+//SYSUT2    DD DISP=SHR,DSN=@jcl_lib@(ZC##DC)
 //SYSIN     DD DUMMY
 //**********************************************************************
-//* Modify ZC@@SD JCL
+//* Modify ZC##SD JCL
 //**********************************************************************
 //STEP17   EXEC PGM=IKJEFT1B,REGION=1024K
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@jcl_lib@(ZC@@SD)
+//INPUT    DD DISP=SHR,DSN=@jcl_lib@(ZC##SD)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&OUTPUT,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -204,20 +204,20 @@
  EXEC '@source_lib@(REXXREPL)'
 /*
 //**********************************************************************
-//* Replace ZC@@SD  JCL
+//* Replace ZC##SD  JCL
 //**********************************************************************
 //STEP18    EXEC PGM=IEBGENER,REGION=1024K
 //SYSPRINT  DD SYSOUT=*
 //SYSUT1    DD DISP=(OLD,DELETE),DSN=&&OUTPUT
-//SYSUT2    DD DISP=SHR,DSN=@jcl_lib@(ZC@@SD)
+//SYSUT2    DD DISP=SHR,DSN=@jcl_lib@(ZC##SD)
 //SYSIN     DD DUMMY
 //**********************************************************************
-//* Modify CSDZC@@ CSD definition source
+//* Modify CSDZC## CSD definition source
 //**********************************************************************
 //STEP19   EXEC PGM=IKJEFT1B,REGION=1024K
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@source_lib@(CSDZC@@)
+//INPUT    DD DISP=SHR,DSN=@source_lib@(CSDZC##)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&OUTPUT,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -226,12 +226,12 @@
  EXEC '@source_lib@(REXXREPL)'
 /*
 //**********************************************************************
-//* Replace CSDZC@@ CSD definition source
+//* Replace CSDZC## CSD definition source
 //**********************************************************************
 //STEP20    EXEC PGM=IEBGENER,REGION=1024K
 //SYSPRINT  DD SYSOUT=*
 //SYSUT1    DD DISP=(OLD,DELETE),DSN=&&OUTPUT
-//SYSUT2    DD DISP=SHR,DSN=@source_lib@(CSDZC@@)
+//SYSUT2    DD DISP=SHR,DSN=@source_lib@(CSDZC##)
 //SYSIN     DD DUMMY
 //**********************************************************************
 //* Modify CSDZECS CSD definition source
@@ -344,12 +344,12 @@
 //SYSUT2    DD DISP=SHR,DSN=@source_lib@(CSDZECSX)
 //SYSIN     DD DUMMY
 //**********************************************************************
-//* Modify ZC@@DC CSD definition source
+//* Modify ZC##DC CSD definition source
 //**********************************************************************
 //STEP31   EXEC PGM=IKJEFT1B,REGION=1024K
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@source_lib@(ZC@@DC)
+//INPUT    DD DISP=SHR,DSN=@source_lib@(ZC##DC)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&OUTPUT,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -358,12 +358,12 @@
  EXEC '@source_lib@(REXXREPL)'
 /*
 //**********************************************************************
-//* Replace ZC@@DC CSD definition source
+//* Replace ZC##DC CSD definition source
 //**********************************************************************
 //STEP32    EXEC PGM=IEBGENER,REGION=1024K
 //SYSPRINT  DD SYSOUT=*
 //SYSUT1    DD DISP=(OLD,DELETE),DSN=&&OUTPUT
-//SYSUT2    DD DISP=SHR,DSN=@source_lib@(ZC@@DC)
+//SYSUT2    DD DISP=SHR,DSN=@source_lib@(ZC##DC)
 //SYSIN     DD DUMMY
 //**********************************************************************
 //* Modify ZCEXPIRE IDCAMS VSAM file definition
@@ -520,12 +520,12 @@
 //SYSUT2    DD DISP=SHR,DSN=@source_lib@(ZECS003)
 //SYSIN     DD DUMMY
 //**********************************************************************
-//* Modify ZNC program source
+//* Modify ZECSNC program source
 //**********************************************************************
 //STEP47   EXEC PGM=IKJEFT1B,REGION=1024K
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@source_lib@(ZNC)
+//INPUT    DD DISP=SHR,DSN=@source_lib@(ZECSNC)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&OUTPUT,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -534,20 +534,20 @@
  EXEC '@source_lib@(REXXREPL)'
 /*
 //**********************************************************************
-//* Replace ZNC program source
+//* Replace ZECSNC program source
 //**********************************************************************
 //STEP48    EXEC PGM=IEBGENER,REGION=1024K
 //SYSPRINT  DD SYSOUT=*
 //SYSUT1    DD DISP=(OLD,DELETE),DSN=&&OUTPUT
-//SYSUT2    DD DISP=SHR,DSN=@source_lib@(ZNC)
+//SYSUT2    DD DISP=SHR,DSN=@source_lib@(ZECSNC)
 //SYSIN     DD DUMMY
 //**********************************************************************
-//* Modify ZPLT program source
+//* Modify ZECSPLT program source
 //**********************************************************************
 //STEP49   EXEC PGM=IKJEFT1B,REGION=1024K
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@source_lib@(ZPLT)
+//INPUT    DD DISP=SHR,DSN=@source_lib@(ZECSPLT)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&OUTPUT,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -556,12 +556,12 @@
  EXEC '@source_lib@(REXXREPL)'
 /*
 //**********************************************************************
-//* Replace ZPLT program source
+//* Replace ZECSPLT program source
 //**********************************************************************
 //STEP50    EXEC PGM=IEBGENER,REGION=1024K
 //SYSPRINT  DD SYSOUT=*
 //SYSUT1    DD DISP=(OLD,DELETE),DSN=&&OUTPUT
-//SYSUT2    DD DISP=SHR,DSN=@source_lib@(ZPLT)
+//SYSUT2    DD DISP=SHR,DSN=@source_lib@(ZECSPLT)
 //SYSIN     DD DUMMY
 //*
 //
