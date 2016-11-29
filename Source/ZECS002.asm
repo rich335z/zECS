@@ -293,7 +293,7 @@ SY_9000  DS   0H
          STH   R1,TD_LEN               Save TD Message length
          ST    R1,WTO_LEN              WTO length
 *
-         EXEC CICS WRITEQ TD QUEUE('@tdq@') FROM(TD_DATA)              X
+         EXEC CICS WRITEQ TD QUEUE('@tdq@') FROM(TD_DATA)               X
                LENGTH(TD_LEN) NOHANDLE
 *
          BC    B'1111',SY_9100         Bypass WTO
