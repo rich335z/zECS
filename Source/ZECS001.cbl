@@ -1,4 +1,4 @@
-       CBL CICS("SP")
+       CBL CICS(SP)
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ZECS001.
        AUTHOR.     Randy Frerking and Rich Jackson.

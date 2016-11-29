@@ -13,7 +13,9 @@
  @grp_list@      @csd_list@
  @id@            00
  @org@           devops
+ @pri_cyl@       100
  @scheme@        http
+ @sec_cyl@       10
 /*
 //SYSUT2    DD DISP=(NEW,PASS),DSN=&&STRINGS,
 //             UNIT=VIO,SPACE=(80,(1000,1000)),

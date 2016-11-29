@@ -13,6 +13,12 @@
 *
 *              Tran,XXXX    Where 'xxxx' is the zECS transaction ID
 *
+*              This program will also start the expiration task for
+*              the zECS service, which will be started in only the
+*              current region/server.  The PLT program ZECSPLT will
+*              start the expiration process across all servers within
+*              a Sysplex.
+*
 ***********************************************************************
 * Dynamic Storage Area (Start)                                        *
 ***********************************************************************
@@ -27,8 +33,10 @@ STCODE   DS    CL02               Transaction start code
          DS   0F
 USERID   DS    CL08               UserID
          DS   0F
+Z_EXP    DS    CL04               zECS   Expiration TransID
+         DS   0F
 Z_NC     DS   0CL16               zECS   Named Counter
-Z_TRAN   DS    CL04               zECS   transaction ID
+Z_TRAN   DS    CL04               zECS   Service TransID
 Z_SUFFIX DS    CL12               _zECS
          DS   0F
 BAS_REG  DS    F                  Return register
@@ -145,6 +153,18 @@ SY_0100  DS   0H
 *
          BAS   R14,SY_9000             WTO and WRITEQ TD
 ***********************************************************************
+* Issue START TRANSID for the new service                             *
+***********************************************************************
+SY_0200  DS   0H
+         MVC   Z_EXP,C_EXP             Move expiration model name
+         MVC   Z_EXP+2(2),Z_TRAN+2     Move service ID
+*
+         EXEC CICS START                                               X
+               TRANSID(Z_EXP)                                          X
+               FROM   (Z_TRAN)                                         X
+               LENGTH (4)                                              X
+               NOHANDLE
+***********************************************************************
 * Send terminal response                                              *
 ***********************************************************************
 SY_0800  DS   0H
@@ -227,6 +247,8 @@ C_MAX    DC    XL08'00000000FFFFFFFF'
 *
          DS   0F
 C_SUFFIX DC    CL12'_ZECS    '
+         DS   0F
+C_EXP    DC    CL04'ZX  '
          DS   0F
 *
 MSG_0010 DC   0CL74

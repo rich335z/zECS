@@ -14,12 +14,10 @@
 * @https_port@  is the https port number for the enterprise caching service
 * @job_parms@   are the parms following JOB in the JOB card
 * @mgt_class@   is the management class to use for ZECS files
-* @pri_cyl@     is the primary number of cylinders for ZECS files
 * @proc_lib@    is the dataset containing the customized version
 *               of the DFHEITAL proc supplied by IBM
 * @program_lib@ is the dataset to be used for ZECS programs
 * @rep_port@    is the replication port number
-* @sec_cyl@     is the secondary number of cylinders for ZECS files
 * @source_lib@  is the dataset containing ZECS source code. This lib.
 * @stg_class@   is the storage class to use for ZECS files
 * @tdq@         is the TDQ for messages. Must be 4 bytes
@@ -37,11 +35,9 @@
  @https_port@        50101
  @job_parms@         MSGCLASS=R,NOTIFY=&SYSUID
  @mgt_class@         MGTCLASS
- @pri_cyl@           100
  @proc_lib@          CICSTS.CICS.PROCLIB
  @program_lib@       CICSTS.CICS.LINKLIB
  @rep_port@          50102
- @sec_cyl@           10
  @source_lib@        CICSTS.ZECS.SOURCE
  @stg_class@         STGCLASS
  @tdq@               CSSL

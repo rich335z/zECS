@@ -93,8 +93,6 @@ denoted by leading asterisk in the first word. The first word is the configurati
 
     1. **@mgt_class@** is the MANAGEMENTCLASS used by IDCAMS for defining ZECS files.
 
-    1. **@pri_cyl@** is the primary number of cylinders for ZECS files.
-
     1. **@proc_lib@** (Optional) is the dataset containing the customized version of the DFHEITAL proc supplied by IBM.
     If you plan to use the supplied assembly job, the proc library is required.
 
@@ -102,8 +100,6 @@ denoted by leading asterisk in the first word. The first word is the configurati
     job, the program load library is required.
 
     1. **@rep_port@** is the replication port number. See replication.
-
-    1. **@sec_cyl@** is the secondary number of cylinders for ZECS files.
 
     1. **@source_lib@** is the dataset containing ZECS source code.
 
@@ -177,7 +173,9 @@ customize the following fields.
     1. **@grp_list@** is the CSD group list you wish this instance to be installed.
     1. **@id@** is the two character ZECS instance identifier ranging from 00 to ZZ.
     1. **@org@** is the organization identifier used in the path of the service.
+    1. **@pri_cyl@** is the primary number of cylinders for ZFAM files.
     1. **scheme** is the setting for the SCHEME parameter on the URIMAP definition. Use either http or https.
+    1. **@sec_cyl@** is the secondary number of cylinders for ZFAM files.
     *Note: the path is created by the @org@ and @appname@ values; /resources/ecs/@org@/@appname@.*
 
 1. Submit the DEFZC## job to define the instance.
