@@ -204,7 +204,7 @@ User=USERID2 ,UPDATE
 User=USERID3 ,SELECT
 
 In the JCL library, edit ZC##SD. Add the userids and their permission levels to the SYSUT1 DD. Change all occurrences of
-## to the value used for @id@ when defining the instance. The job will create a document template member and define it
+"##" to the value used for @id@ when defining the instance. The job will create a document template member and define it
 to the instance group. Submit the job. Upon successful completion, install the document template definition.
 
 ### Replication
