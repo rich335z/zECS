@@ -1,4 +1,4 @@
-       CBL CICS(SP)
+       CBL CICS("SP")
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ZECS003.
        AUTHOR.     Randy Frerking and Rich Jackson.
@@ -72,7 +72,7 @@
 
        01  FC-READ                PIC  X(06) VALUE 'READ  '.
        01  FC-DELETE              PIC  X(06) VALUE 'DELETE'.
-       01  TD-QUEUE               PIC  X(04) VALUE '@tdq@'.
+       01  CSSL                   PIC  X(04) VALUE '@tdq@'.
        01  TD-LENGTH              PIC S9(04) COMP VALUE ZEROES.
 
        01  TD-RECORD.

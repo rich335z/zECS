@@ -1,4 +1,4 @@
-       CBL CICS(SP)
+       CBL CICS("SP")
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ZECSPLT.
        AUTHOR.     Randy Frerking and Rich Jackson.
@@ -41,7 +41,7 @@
            02  FILLER             PIC  X(02) VALUE 'ZX'.
            02  ZX-SUFFIX          PIC  X(02) VALUE SPACES.
 
-       01  TD-QUEUE               PIC  X(04) VALUE '@tdq@'.
+       01  CSSL                   PIC  X(04) VALUE '@tdq@'.
        01  TD-LENGTH              PIC S9(04) COMP VALUE ZEROES.
 
        01  TD-RECORD.
@@ -114,7 +114,7 @@
 
       *****************************************************************
       * Issue START command for zECS exiration for each table         *
-      * Issue WRITEQ TD QUEUE(TD-QUEUE)                               *
+      * Issue WRITEQ TD QUEUE(CSSL)                                   *
       * Issue WTO                                                     *
       *****************************************************************
        2200-START.
@@ -132,7 +132,7 @@
            MOVE URI-TRAN             TO TD-TRAN.
            MOVE URI-PATH             TO TD-PATH.
 
-           EXEC CICS WRITEQ TD QUEUE(TD-QUEUE)
+           EXEC CICS WRITEQ TD QUEUE(CSSL)
                 FROM  (TD-RECORD)
                 LENGTH(TD-LENGTH)
                 NOHANDLE

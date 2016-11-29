@@ -1,4 +1,4 @@
-       CBL CICS(SP)
+       CBL CICS("SP")
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ZECS000.
        AUTHOR.     Randy Frerking and Rich Jackson.
@@ -114,7 +114,7 @@
 
        01  FC-READ                PIC  X(06) VALUE 'READ  '.
        01  FC-DELETE              PIC  X(06) VALUE 'DELETE'.
-       01  TD-QUEUE               PIC  X(04) VALUE '@tdq@'.
+       01  CSSL                   PIC  X(04) VALUE '@tdq@'.
        01  TD-LENGTH              PIC S9(04) COMP VALUE ZEROES.
 
        01  TD-RECORD.
@@ -763,9 +763,9 @@
 
 
       *****************************************************************
-      * Write TD TD-QUEUE.                                            *
+      * Write TD CSSL.                                                *
       *****************************************************************
-       9900-WRITE-TD-QUEUE.
+       9900-WRITE-CSSL.
            PERFORM 9950-ABS         THRU 9950-EXIT.
            MOVE EIBTRNID              TO TD-TRANID.
            EXEC CICS FORMATTIME ABSTIME(CURRENT-ABS)
@@ -777,7 +777,7 @@
            END-EXEC.
 
            MOVE LENGTH OF TD-RECORD   TO TD-LENGTH.
-           EXEC CICS WRITEQ TD QUEUE(TD-QUEUE)
+           EXEC CICS WRITEQ TD QUEUE(CSSL)
                 FROM(TD-RECORD)
                 LENGTH(TD-LENGTH)
                 NOHANDLE

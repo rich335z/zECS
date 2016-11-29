@@ -1,4 +1,4 @@
-       CBL CICS(SP)
+       CBL CICS("SP")
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ZECS001.
        AUTHOR.     Randy Frerking and Rich Jackson.
@@ -271,7 +271,7 @@
        01  FC-READ                PIC  X(07) VALUE 'READ   '.
        01  FC-WRITE               PIC  X(07) VALUE 'WRITE  '.
        01  FC-REWRITE             PIC  X(07) VALUE 'REWRITE'.
-       01  TD-QUEUE               PIC  X(04) VALUE '@tdq@'.
+       01  CSSL                   PIC  X(04) VALUE '@tdq@'.
        01  TD-LENGTH              PIC S9(04) COMP VALUE ZEROES.
 
        01  TD-RECORD.
@@ -964,7 +964,7 @@
       *                                                               *
       * Both of the conditions will now return HTTP status 204 and    *
       * HTTP status text '204 Record not found'.  The error message   *
-      * to TD-QUEUE will no longer be written, as both conditions will *
+      * to CSSL will no longer be written, as both conditions will    *
       * ultimately be resolved by zEXPIRE deleting both KEY and FILE  *
       * structures when a FILE entry TTL has exceed the limit.        *
       *                                                               *
@@ -1972,7 +1972,7 @@
            MOVE EIBRESP               TO FE-RESP.
            MOVE EIBRESP2              TO FE-RESP2.
            MOVE FILE-ERROR            TO TD-MESSAGE.
-           PERFORM 9900-WRITE-TD-QUEUE THRU 9900-EXIT.
+           PERFORM 9900-WRITE-CSSL  THRU 9900-EXIT.
 
        9100-EXIT.
            EXIT.
@@ -1988,7 +1988,7 @@
            MOVE EIBRESP               TO KE-RESP.
            MOVE EIBRESP2              TO KE-RESP2.
            MOVE KEY-ERROR             TO TD-MESSAGE.
-           PERFORM 9900-WRITE-TD-QUEUE THRU 9900-EXIT.
+           PERFORM 9900-WRITE-CSSL  THRU 9900-EXIT.
 
        9200-EXIT.
            EXIT.
@@ -2000,7 +2000,7 @@
            MOVE EIBRESP               TO WEB-RESP.
            MOVE EIBRESP2              TO WEB-RESP2.
            MOVE WEB-ERROR             TO TD-MESSAGE.
-           PERFORM 9900-WRITE-TD-QUEUE THRU 9900-EXIT.
+           PERFORM 9900-WRITE-CSSL  THRU 9900-EXIT.
 
        9300-EXIT.
            EXIT.
@@ -2120,9 +2120,9 @@
            EXIT.
 
       *****************************************************************
-      * Write TD TD-QUEUE.                                            *
+      * Write TD CSSL.                                                *
       *****************************************************************
-       9900-WRITE-TD-QUEUE.
+       9900-WRITE-CSSL.
            PERFORM 9950-ABS         THRU 9950-EXIT.
            MOVE EIBTRNID              TO TD-TRANID.
            EXEC CICS FORMATTIME ABSTIME(ZF-ABS)
@@ -2134,7 +2134,7 @@
            END-EXEC.
 
            MOVE LENGTH OF TD-RECORD   TO TD-LENGTH.
-           EXEC CICS WRITEQ TD QUEUE(TD-QUEUE)
+           EXEC CICS WRITEQ TD QUEUE(CSSL)
                 FROM(TD-RECORD)
                 LENGTH(TD-LENGTH)
                 NOHANDLE
