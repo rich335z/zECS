@@ -54,21 +54,18 @@ names would be the ones pointing to the VIPA distribute address on their respect
 
 
 ### Installation instructions
-1. Download the ZECS repository to your local workstation.
+1. [Fork the repo](https://help.github.com/articles/fork-a-repo/) to your user account.
 
-1. Allocate a JCL and source library on the mainframe. Both libraries will
-need to have a record format of FB, a logical record length of 80 and be a dataset type of PDS or LIBRARY.
+1. Download the zECS repository to your local workstation.
 
-1. FTP the JCL in the JCL folder to the JCL library you have allocated.
+1. Allocate a source library on the mainframe for each folder in the repository. All libraries will
+need to have a record format of FB, a logical record length of 80 and be a dataset type of PDS or PDSE.
 
-1. FTP the source code and definitions in the source folder to the source library you have allocated.
+1. FTP the contents of each project folder into the associated PDS/PDSE library you have allocated.
 
-1. Copy the ZECSZFC and ZECSZKC from the source library to a copybook library used by your own compile processes
-if you do not plan on using the DFHEITAL and DFHYITVL procs.
-
-1. *In the source library, locate the CONFIG member and edit it.* This file contains a list of configuration items used
-to configure the JCL and source. The file itself provides a brief description of each configuration item. Comments are
-denoted by leading asterisk in the first word. The first word is the configuration item and the second word is its value.
+1. *In the TXT source PDS/PDSE library, locate the CONFIG member and edit it.* This file contains a list of configuration items used
+to configure the JCL and source to help match your installation standards. The file itself provides a brief
+description of each configuration item. Comments are denoted by leading asterisk in the first word. The first word in non-comment lines is the configuration item and the second word is its value.
 
     1. **@auth@** is the value of the AUTHENTICATE parameter for the https TCPIPService definition. The values can be
     NO, ASSERTED, AUTOMATIC, AUTOREGISTER, BASIC, CERTIFICATE.
@@ -80,34 +77,32 @@ denoted by leading asterisk in the first word. The first word is the configurati
 
     1. **@cics_hlq@** is the high level qualifier for CICS datasets.
 
-    1. **@csd_list@** is the CSD group list name. This is the list name to use for the ZECS group.
-    
-    1. **@data_class@** is the DATACLASS used by IDCAMS for defining ZECS files
+    1. **@csd_list@** is the CSD group list name. This is the list name to use for the ZUID group.
 
-    1. **@doct_dd@** is the document template DDNAME defined to CICS region.
+    1. **@http_port@** is the http port number to be used for ZUID.
 
-    1. **@ecs_hlq@** is the high level qualifier for ZECS files.
-
-    1. **@http_port@** is the http port number to be used for ZECS.
-
-    1. **@https_port@** is the https port number to be used for ZECS.
+    1. **@https_port@** is the https port number to be used for ZUID.
 
     1. **@job_parms@** are the parameters following JOB in the JOB card. Be mindful. This substitution will only
     handle one line worth of JOB parameters when customizing jobs.
 
-    1. **@mgt_class@** is the MANAGEMENTCLASS used by IDCAMS for defining ZECS files.
-
     1. **@proc_lib@** (Optional) is the dataset containing the customized version of the DFHEITAL proc supplied by IBM.
     If you plan to use the supplied assembly job, the proc library is required.
 
-    1. **@program_lib@** (Optional) is the dataset to be used for ZECS programs. If you plan to use the supplied assembly
+    1. **@program_lib@** (Optional) is the dataset to be used for zUID programs. If you plan to use the supplied assembly
     job, the program load library is required.
-
-    1. **@rep_port@** is the replication port number. See replication.
-
-    1. **@source_lib@** is the dataset containing ZECS source code.
-
-    1. **@stg_class@** is the storage class to use for ZECS files.
+    
+    1. **@srclib_prfx@** is the (potentially multi-node) prefix to be used for the various source libraries of the product. This should follow your installation standards. It could be as simple as your TSO PROFILE PREFIX, or could be a multi-node qualifier that represents your team. Of course, standard [z/OS dataset naming constraints](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.idad400/name.htm) still apply. So, keep this to something <= 30 bytes/chars (including dot-separators) to avoid issues. We require up to 14 bytes/chars on the lower qualifier end to uniquely identify the various data stores.
+    
+    1. **@source_vrsn@** is the version identifier to be used as the LLQ for the collection of source libraries associated with this version of the product. We generally follow [Semantic Versioning](http://semver.org/) guidelines, with an exception for allowing leading zeros on the individual version/release/patch nodes in order to maintain consistency in the DSN LLQ format. The format of the version identifier that we'll follow for the foreseeable future is a 7-character DSN node like V*vvrrpp* where:
+    
+      _vv_ - represents major versions (i.e. breaking or non-backwards-compatible changes)
+      
+      _rr_ - represents minor releases (i.e. non-breaking or backwards-compatible feature changes)
+      
+      _pp_ - represents patches (i.e. non-breaking or backwards-compatible bug fixes)
+      
+      For example, V010000 is the initial version... and V010100 would represent the next _release_ with non-breaking changes, or V010001 would represent a bug-fix on the original version.
 
     1. **@tdq@** is the transient data queue (TDQ) for error messages. Must be 4 bytes.
 
@@ -120,8 +115,8 @@ customizations will need to be made.
     1. Modify JOB card to meet your system installation standards.
 
     1. Change all occurrences of the following.
-        1. **@source_lib@** to the source library dataset name. Example. C ALL @source_lib@ CICSTS.ZECS.SOURCE
-        1. **@jcl_lib@** to this JCL library dataset name. Example. C ALL @jcl_lib@ CICSTS.ZECS.CNTL
+        1. **@srclib_prfx@** is the (multi-node) prefix to be used for the various source libraries of the product. Example. C ALL @srclib_prfx@ CICSTS.ZUID
+        1. **@source_vrsn@** to the current version of the product source code. Example. C ALL @source_vrsn@ V010000
 
 1. Submit the CONFIG job. It should complete with return code 0. The remaining jobs and CSD definitions have been
 customized.
