@@ -27,7 +27,8 @@
 //CUSTOMIZ EXEC PGM=IKJEFT1B
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.RDO(CSDZC##)
+//INPUT    DD DISP=SHR,
+//            DSN=@srclib_prfx@.@source_vrsn@.RDO(CSDZC##)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&CSDCMDS,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -49,7 +50,8 @@
 //ECSFILEC EXEC PGM=IKJEFT1B
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.IDCAMS(ZECSFILE)
+//INPUT    DD DISP=SHR,
+//            DSN=@srclib_prfx@.@source_vrsn@.IDCAMS(ZECSFILE)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&ZECSFILE,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)
@@ -69,7 +71,8 @@
 //ECSKEYC  EXEC PGM=IKJEFT1B
 //SYSPRINT DD SYSOUT=*
 //SYSTSPRT DD SYSOUT=*
-//INPUT    DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.IDCAMS(ZECSKEY)
+//INPUT    DD DISP=SHR,
+//            DSN=@srclib_prfx@.@source_vrsn@.IDCAMS(ZECSKEY)
 //OUTPUT   DD DISP=(NEW,PASS),DSN=&&ZECSKEY,
 //            UNIT=VIO,SPACE=(80,(1000,1000)),
 //            DCB=(LRECL=80,RECFM=FB)

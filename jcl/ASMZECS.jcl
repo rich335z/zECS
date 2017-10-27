@@ -8,7 +8,8 @@
 //**********************************************************************
 //ZECS000  EXEC DFHYITVL,PROGLIB=@program_lib@,
 //         DSCTLIB=@srclib_prfx@.@source_vrsn@.ASM
-//TRN.SYSIN  DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS000)
+//TRN.SYSIN  DD DISP=SHR,
+//              DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS000)
 //*
 //LKED.SYSIN DD *
    NAME ZECS000(R)
@@ -18,7 +19,8 @@
 //**********************************************************************
 //ZECS001  EXEC DFHYITVL,PROGLIB=@program_lib@,
 //         DSCTLIB=@srclib_prfx@.@source_vrsn@.ASM
-//TRN.SYSIN  DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS001)
+//TRN.SYSIN  DD DISP=SHR,
+//              DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS001)
 //*
 //LKED.SYSIN DD *
    NAME ZECS001(R)
@@ -28,7 +30,8 @@
 //**********************************************************************
 //ZECS002  EXEC DFHEITAL,PROGLIB=@program_lib@,
 //         DSCTLIB=@srclib_prfx@.@source_vrsn@.ASM
-//TRN.SYSIN  DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS002)
+//TRN.SYSIN  DD DISP=SHR,
+//              DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS002)
 //*
 //LKED.SYSIN DD *
    NAME ZECS002(R)
@@ -38,7 +41,8 @@
 //**********************************************************************
 //ZECS003  EXEC DFHYITVL,PROGLIB=@program_lib@,
 //         DSCTLIB=@srclib_prfx@.@source_vrsn@.ASM
-//TRN.SYSIN  DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS003)
+//TRN.SYSIN  DD DISP=SHR,
+//              DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECS003)
 //*
 //LKED.SYSIN DD *
    NAME ZECS003(R)
@@ -48,7 +52,8 @@
 //**********************************************************************
 //ZECSNC   EXEC DFHEITAL,PROGLIB=@program_lib@,
 //         DSCTLIB=@srclib_prfx@.@source_vrsn@.ASM
-//TRN.SYSIN  DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECSNC)
+//TRN.SYSIN  DD DISP=SHR,
+//              DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECSNC)
 //*
 //LKED.SYSIN DD *
    NAME ZECSNC(R)
@@ -58,7 +63,8 @@
 //**********************************************************************
 //ZECSPLT  EXEC DFHYITVL,PROGLIB=@program_lib@,
 //         DSCTLIB=@srclib_prfx@.@source_vrsn@.ASM
-//TRN.SYSIN  DD DISP=SHR,DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECSPLT)
+//TRN.SYSIN  DD DISP=SHR,
+//              DSN=@srclib_prfx@.@source_vrsn@.ASM(ZECSPLT)
 //*
 //LKED.SYSIN DD *
    NAME ZECSPLT(R)
