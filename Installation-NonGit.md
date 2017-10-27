@@ -58,8 +58,7 @@ names would be the ones pointing to the VIPA distribute address on their respect
 
 1. Download the zECS repository to your local workstation.
 
-1. Allocate a source library on the mainframe for each folder in the repository. All libraries will
-need to have a record format of FB, a logical record length of 80 and be a dataset type of PDS or PDSE.
+1. Allocate a source library on the mainframe for each folder in the repository. The names of these libraries must follow the format of *@srclib_prfx@.@source_vrsn@* with the folder name appended to the end. See step 6 for the description of these variables. All libraries will need to have a record format of FB, a logical record length of 80 and be a dataset type of PDS or PDSE.
 
 1. FTP the contents of each project folder into the associated PDS/PDSE library you have allocated.
 
